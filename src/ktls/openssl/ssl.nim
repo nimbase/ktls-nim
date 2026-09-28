@@ -44,6 +44,12 @@ proc sslGetCurrentCipher*(ssl: SslPtr): pointer {.
     importc: "SSL_get_current_cipher".}
 proc sslCipherGetName*(cipher: pointer): cstring {.
     importc: "SSL_CIPHER_get_name".}
+proc sslCtxSetNumTickets*(ctx: SslCtx, n: cint): cint {.
+    importc: "SSL_CTX_set_num_tickets".}
+  ## How many post-handshake session tickets the server sends.
+  ## Pin to `0` before a manual kTLS handoff: every ticket is an
+  ## application-epoch record that would advance the sequence number
+  ## out from under the `recSeq` you install.
 {.pop.}
 
 proc pinTls13*(ctx: SslCtx) =

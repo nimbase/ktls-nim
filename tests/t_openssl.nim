@@ -74,7 +74,9 @@ proc sendAll(fd: SocketHandle, data: string) =
   var sent = 0
   while sent < data.len:
     let n = posix.send(fd, unsafeAddr data[sent], data.len - sent, 0)
-    assert n > 0, "send failed"
+    if n <= 0:
+      raise newException(OSError,
+        "send failed, n=" & $n & ": " & osErrorMsg(osLastError()))
     sent += n
 
 proc recvExact(fd: SocketHandle, n: int): string =
@@ -82,7 +84,9 @@ proc recvExact(fd: SocketHandle, n: int): string =
   var got = 0
   while got < n:
     let r = posix.recv(fd, addr result[got], n - got, 0)
-    assert r > 0, "recv failed"
+    if r <= 0:
+      raise newException(OSError,
+        "recv failed, r=" & $r & ": " & osErrorMsg(osLastError()))
     got += r
 
 type
@@ -108,6 +112,10 @@ proc setupContexts(tmp: string): tuple[srvCtx, cliCtx: SslCtx] =
     assert SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_GCM_SHA256") == 1
     pinTls13(ctx)
     sslCtxSetKeylogCallback(ctx, keylogCb)
+  # No post-handshake tickets: each one is an application-epoch record
+  # that would move the sequence numbers away from the zero `recSeq`
+  # installed at handoff. Deterministic seq 0 in both directions.
+  assert sslCtxSetNumTickets(srvCtx, 0) == 1
   SSL_CTX_set_verify(cliCtx, SSL_VERIFY_NONE, nil)
   (srvCtx, cliCtx)
 
