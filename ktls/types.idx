@@ -1,0 +1,20 @@
+nimTitle	types	ktls/types.html	module ktls/types		0
+nim	tv12	ktls/types.html#tv12	TlsVersion.tv12		14
+nim	tv13	ktls/types.html#tv13	TlsVersion.tv13		14
+nim	TlsVersion	ktls/types.html#TlsVersion	enum TlsVersion		14
+nim	csAesGcm128	ktls/types.html#csAesGcm128	CipherSuite.csAesGcm128		20
+nim	csAesGcm256	ktls/types.html#csAesGcm256	CipherSuite.csAesGcm256		20
+nim	csAesCcm128	ktls/types.html#csAesCcm128	CipherSuite.csAesCcm128		20
+nim	csChacha20Poly1305	ktls/types.html#csChacha20Poly1305	CipherSuite.csChacha20Poly1305		20
+nim	csSm4Gcm	ktls/types.html#csSm4Gcm	CipherSuite.csSm4Gcm		20
+nim	csSm4Ccm	ktls/types.html#csSm4Ccm	CipherSuite.csSm4Ccm		20
+nim	csAriaGcm128	ktls/types.html#csAriaGcm128	CipherSuite.csAriaGcm128		20
+nim	csAriaGcm256	ktls/types.html#csAriaGcm256	CipherSuite.csAriaGcm256		20
+nim	CipherSuite	ktls/types.html#CipherSuite	enum CipherSuite		20
+nim	KeyMaterial	ktls/types.html#KeyMaterial	object KeyMaterial		30
+nim	keyLen	ktls/types.html#keyLen,CipherSuite	proc keyLen(c: CipherSuite): Natural		43
+nim	ivLen	ktls/types.html#ivLen,CipherSuite	proc ivLen(c: CipherSuite): Natural		48
+nim	saltLen	ktls/types.html#saltLen,CipherSuite	proc saltLen(c: CipherSuite): Natural		53
+nim	initKeyMaterial	ktls/types.html#initKeyMaterial,CipherSuite,TlsVersion,openArray[byte],openArray[byte],openArray[byte],array[,byte]	proc initKeyMaterial(cipher: CipherSuite; version: TlsVersion;\n                key, iv, salt: openArray[byte];\n                recSeq: array[8, byte] = [0'u8, 0, 0, 0, 0, 0, 0, 0]): KeyMaterial		58
+nim	cipherType	ktls/types.html#cipherType,KeyMaterial	proc cipherType(km: KeyMaterial): uint16		78
+nim	versionNumber	ktls/types.html#versionNumber,KeyMaterial	proc versionNumber(km: KeyMaterial): uint16		79

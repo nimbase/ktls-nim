@@ -1,0 +1,5 @@
+nimTitle	errors	ktls/errors.html	module ktls/errors		0
+nim	KtlsError	ktls/errors.html#KtlsError	object KtlsError		9
+nim	KtlsKeyUpdateNeeded	ktls/errors.html#KtlsKeyUpdateNeeded	object KtlsKeyUpdateNeeded		12
+nim	raiseKtls	ktls/errors.html#raiseKtls,string	proc raiseKtls(msg: string; code = OSErrorCode(-1))		17
+nim	checkKtls	ktls/errors.html#checkKtls,cint,string	proc checkKtls(rc: cint; what: string)		24

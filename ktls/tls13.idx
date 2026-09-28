@@ -1,0 +1,13 @@
+nimTitle	tls13	ktls/tls13.html	module ktls/tls13		0
+nim	tlsAes128GcmSha256	ktls/tls13.html#tlsAes128GcmSha256	Tls13Suite.tlsAes128GcmSha256		18
+nim	tlsAes256GcmSha384	ktls/tls13.html#tlsAes256GcmSha384	Tls13Suite.tlsAes256GcmSha384		18
+nim	tlsChacha20Poly1305Sha256	ktls/tls13.html#tlsChacha20Poly1305Sha256	Tls13Suite.tlsChacha20Poly1305Sha256		18
+nim	Tls13Suite	ktls/tls13.html#Tls13Suite	enum Tls13Suite		18
+nim	suiteCipher	ktls/tls13.html#suiteCipher,Tls13Suite	proc suiteCipher(s: Tls13Suite): CipherSuite		26
+nim	suiteHashLen	ktls/tls13.html#suiteHashLen,Tls13Suite	proc suiteHashLen(s: Tls13Suite): Natural		32
+nim	parseTls13Suite	ktls/tls13.html#parseTls13Suite,string	proc parseTls13Suite(name: string): Tls13Suite		37
+nim	hkdfExpandLabel	ktls/tls13.html#hkdfExpandLabel,openArray[byte],string,openArray[byte],Natural,Natural	proc hkdfExpandLabel(secret: openArray[byte]; label: string;\n                context: openArray[byte]; outLen: Natural; hashLen: Natural): seq[\n    byte]		45
+nim	trafficKey	ktls/tls13.html#trafficKey,openArray[byte],Natural,Natural	proc trafficKey(secret: openArray[byte]; hashLen: Natural; keyLen: Natural): seq[byte]		65
+nim	trafficIv	ktls/tls13.html#trafficIv,openArray[byte],Natural	proc trafficIv(secret: openArray[byte]; hashLen: Natural): array[12, byte]		70
+nim	nextTrafficSecret	ktls/tls13.html#nextTrafficSecret,openArray[byte],Natural	proc nextTrafficSecret(secret: openArray[byte]; hashLen: Natural): seq[byte]		75
+nim	toKeyMaterial	ktls/tls13.html#toKeyMaterial,Tls13Suite,openArray[byte],array[,byte]	proc toKeyMaterial(suite: Tls13Suite; secret: openArray[byte];\n              recSeq: array[8, byte] = [0'u8, 0, 0, 0, 0, 0, 0, 0]): KeyMaterial		79

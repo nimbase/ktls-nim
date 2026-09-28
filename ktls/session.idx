@@ -1,0 +1,13 @@
+nimTitle	session	ktls/session.html	module ktls/session		0
+nim	enableKtls	ktls/session.html#enableKtls,SocketHandle	proc enableKtls(fd: SocketHandle)		23
+nim	setTx	ktls/session.html#setTx,SocketHandle,KeyMaterial	proc setTx(fd: SocketHandle; km: KeyMaterial)		99
+nim	setRx	ktls/session.html#setRx,SocketHandle,KeyMaterial	proc setRx(fd: SocketHandle; km: KeyMaterial)		106
+nim	updateTxKey	ktls/session.html#updateTxKey,SocketHandle,KeyMaterial	proc updateTxKey(fd: SocketHandle; km: KeyMaterial)		112
+nim	updateRxKey	ktls/session.html#updateRxKey,SocketHandle,KeyMaterial	proc updateRxKey(fd: SocketHandle; km: KeyMaterial)		117
+nim	txConf	ktls/session.html#txConf,SocketHandle	proc txConf(fd: SocketHandle): tuple[version: TlsVersion, cipher: CipherSuite]		122
+nim	rxConf	ktls/session.html#rxConf,SocketHandle	proc rxConf(fd: SocketHandle): tuple[version: TlsVersion, cipher: CipherSuite]		130
+nim	isTxOffloaded	ktls/session.html#isTxOffloaded,SocketHandle	proc isTxOffloaded(fd: SocketHandle): bool		137
+nim	isRxOffloaded	ktls/session.html#isRxOffloaded,SocketHandle	proc isRxOffloaded(fd: SocketHandle): bool		145
+nim	setTxZerocopy	ktls/session.html#setTxZerocopy,SocketHandle,bool	proc setTxZerocopy(fd: SocketHandle; enable: bool)		153
+nim	setRxExpectNoPad	ktls/session.html#setRxExpectNoPad,SocketHandle,bool	proc setRxExpectNoPad(fd: SocketHandle; enable: bool)		157
+nim	setTxMaxPayloadLen	ktls/session.html#setTxMaxPayloadLen,SocketHandle,uint16	proc setTxMaxPayloadLen(fd: SocketHandle; maxLen: uint16)		162

@@ -1,0 +1,37 @@
+nimTitle	raw	ktls/raw.html	module ktls/raw		0
+nim	SolTls	ktls/raw.html#SolTls	const SolTls		14
+nim	IpProtoTcp	ktls/raw.html#IpProtoTcp	const IpProtoTcp		16
+nim	TcpUlp	ktls/raw.html#TcpUlp	const TcpUlp		18
+nim	TlsTx	ktls/raw.html#TlsTx	const TlsTx		21
+nim	TlsRx	ktls/raw.html#TlsRx	const TlsRx		23
+nim	TlsTxZerocopyRo	ktls/raw.html#TlsTxZerocopyRo	const TlsTxZerocopyRo		25
+nim	TlsRxExpectNoPad	ktls/raw.html#TlsRxExpectNoPad	const TlsRxExpectNoPad		27
+nim	TlsTxMaxPayloadLen	ktls/raw.html#TlsTxMaxPayloadLen	const TlsTxMaxPayloadLen		29
+nim	Tls12Version	ktls/raw.html#Tls12Version	const Tls12Version		32
+nim	Tls13Version	ktls/raw.html#Tls13Version	const Tls13Version		33
+nim	TlsCipherAesGcm128	ktls/raw.html#TlsCipherAesGcm128	const TlsCipherAesGcm128		35
+nim	TlsCipherAesGcm256	ktls/raw.html#TlsCipherAesGcm256	const TlsCipherAesGcm256		36
+nim	TlsCipherAesCcm128	ktls/raw.html#TlsCipherAesCcm128	const TlsCipherAesCcm128		37
+nim	TlsCipherChacha20Poly1305	ktls/raw.html#TlsCipherChacha20Poly1305	const TlsCipherChacha20Poly1305		38
+nim	TlsCipherSm4Gcm	ktls/raw.html#TlsCipherSm4Gcm	const TlsCipherSm4Gcm		39
+nim	TlsCipherSm4Ccm	ktls/raw.html#TlsCipherSm4Ccm	const TlsCipherSm4Ccm		40
+nim	TlsCipherAriaGcm128	ktls/raw.html#TlsCipherAriaGcm128	const TlsCipherAriaGcm128		41
+nim	TlsCipherAriaGcm256	ktls/raw.html#TlsCipherAriaGcm256	const TlsCipherAriaGcm256		42
+nim	EKeyExpired	ktls/raw.html#EKeyExpired	const EKeyExpired		48
+nim	TlsCryptoInfo	ktls/raw.html#TlsCryptoInfo	object TlsCryptoInfo		53
+nim	Tls12CryptoInfoAesGcm128	ktls/raw.html#Tls12CryptoInfoAesGcm128	object Tls12CryptoInfoAesGcm128		58
+nim	Tls12CryptoInfoAesGcm256	ktls/raw.html#Tls12CryptoInfoAesGcm256	object Tls12CryptoInfoAesGcm256		65
+nim	Tls12CryptoInfoAesCcm128	ktls/raw.html#Tls12CryptoInfoAesCcm128	object Tls12CryptoInfoAesCcm128		72
+nim	Tls12CryptoInfoChacha20Poly1305	ktls/raw.html#Tls12CryptoInfoChacha20Poly1305	object Tls12CryptoInfoChacha20Poly1305		79
+nim	Tls12CryptoInfoSm4Gcm	ktls/raw.html#Tls12CryptoInfoSm4Gcm	object Tls12CryptoInfoSm4Gcm		88
+nim	Tls12CryptoInfoSm4Ccm	ktls/raw.html#Tls12CryptoInfoSm4Ccm	object Tls12CryptoInfoSm4Ccm		95
+nim	Tls12CryptoInfoAriaGcm128	ktls/raw.html#Tls12CryptoInfoAriaGcm128	object Tls12CryptoInfoAriaGcm128		102
+nim	Tls12CryptoInfoAriaGcm256	ktls/raw.html#Tls12CryptoInfoAriaGcm256	object Tls12CryptoInfoAriaGcm256		109
+nim	rawEnableUlp	ktls/raw.html#rawEnableUlp,SocketHandle	proc rawEnableUlp(fd: SocketHandle): cint		128
+nim	rawSetTx	ktls/raw.html#rawSetTx,SocketHandle,pointer,SockLen	proc rawSetTx(fd: SocketHandle; cryptoInfo: pointer; infoLen: SockLen): cint		136
+nim	rawSetRx	ktls/raw.html#rawSetRx,SocketHandle,pointer,SockLen	proc rawSetRx(fd: SocketHandle; cryptoInfo: pointer; infoLen: SockLen): cint		142
+nim	rawSetTxZerocopyRo	ktls/raw.html#rawSetTxZerocopyRo,SocketHandle,bool	proc rawSetTxZerocopyRo(fd: SocketHandle; enable: bool): cint		147
+nim	rawSetRxExpectNoPad	ktls/raw.html#rawSetRxExpectNoPad,SocketHandle,bool	proc rawSetRxExpectNoPad(fd: SocketHandle; enable: bool): cint		154
+nim	rawSetTxMaxPayloadLen	ktls/raw.html#rawSetTxMaxPayloadLen,SocketHandle,uint16	proc rawSetTxMaxPayloadLen(fd: SocketHandle; maxLen: uint16): cint		162
+nim	rawGetTx	ktls/raw.html#rawGetTx,SocketHandle,pointer,SockLen	proc rawGetTx(fd: SocketHandle; buf: pointer; len: var SockLen): cint		170
+nim	rawGetRx	ktls/raw.html#rawGetRx,SocketHandle,pointer,SockLen	proc rawGetRx(fd: SocketHandle; buf: pointer; len: var SockLen): cint		175

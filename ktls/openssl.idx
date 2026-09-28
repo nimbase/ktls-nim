@@ -1,0 +1,6 @@
+nimTitle	openssl	ktls/openssl.html	module ktls/openssl		0
+nim	SslCtrlOptions	ktls/openssl.html#SslCtrlOptions	const SslCtrlOptions		22
+nim	SslOpEnableKtls	ktls/openssl.html#SslOpEnableKtls	const SslOpEnableKtls		24
+nim	SslOpEnableKtlsTxZerocopySendfile	ktls/openssl.html#SslOpEnableKtlsTxZerocopySendfile	const SslOpEnableKtlsTxZerocopySendfile		26
+nim	enableKtlsOnCtx	ktls/openssl.html#enableKtlsOnCtx,pointer,uint64	proc enableKtlsOnCtx(ctx: pointer; extraOps: uint64 = 0): uint64		38
+nim	enableKtlsOnConn	ktls/openssl.html#enableKtlsOnConn,pointer,uint64	proc enableKtlsOnConn(ssl: pointer; extraOps: uint64 = 0): uint64		46

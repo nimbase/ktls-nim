@@ -1,0 +1,6 @@
+nimTitle	keylog	ktls/openssl/keylog.html	module ktls/openssl/keylog		0
+nim	TrafficSecrets	ktls/openssl/keylog.html#TrafficSecrets	object TrafficSecrets		25
+nim	parseKeylogLine	ktls/openssl/keylog.html#parseKeylogLine,string,TrafficSecrets	proc parseKeylogLine(line: string; secrets: var TrafficSecrets)		43
+nim	parseKeylog	ktls/openssl/keylog.html#parseKeylog,string	proc parseKeylog(text: string): TrafficSecrets		65
+nim	trafficKeyMaterial	ktls/openssl/keylog.html#trafficKeyMaterial,openArray[byte],Tls13Suite,array[,byte]	proc trafficKeyMaterial(secret: openArray[byte]; suite: Tls13Suite;\n                   recSeq: array[8, byte] = [0'u8, 0, 0, 0, 0, 0, 0, 0]): KeyMaterial		70
+nim	roleKeyMaterial	ktls/openssl/keylog.html#roleKeyMaterial,TrafficSecrets,bool,array[,byte],array[,byte]	proc roleKeyMaterial(secrets: TrafficSecrets; amClient: bool;\n                txRecSeq: array[8, byte] = [0'u8, 0, 0, 0, 0, 0, 0, 0];\n                rxRecSeq: array[8, byte] = [0'u8, 0, 0, 0, 0, 0, 0, 0]): tuple[\n    tx, rx: KeyMaterial]		75
