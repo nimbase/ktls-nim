@@ -281,8 +281,13 @@ suite "OpenSSL end-to-end":
 
             let cKeys = roleKeyMaterial(secrets, amClient = true)
             let sKeys = roleKeyMaterial(secrets, amClient = false)
-            enableKtls(kcfd)
-            enableKtls(ksfd)
+            # ensureKtls, not enableKtls: distro OpenSSL builds with
+            # kTLS support may already have attached the ULP during
+            # the handshake. Re-installing our (identical) keys at
+            # seq 0 over that state is safe: tickets are disabled
+            # and no app records flowed through the kernel yet.
+            ensureKtls(kcfd)
+            ensureKtls(ksfd)
             setTx(kcfd, cKeys.tx)
             setRx(kcfd, cKeys.rx)
             setTx(ksfd, sKeys.tx)

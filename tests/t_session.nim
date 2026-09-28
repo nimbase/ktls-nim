@@ -55,3 +55,9 @@ test "session calls raise KtlsError on a bad fd":
     setRx(SocketHandle(-1), km)
   check isTxOffloaded(SocketHandle(-1)) == false
   check isRxOffloaded(SocketHandle(-1)) == false
+
+test "ensureKtls re-raises anything but EEXIST":
+  # Bad fd fails with EBADF, not EEXIST — must still raise, proving
+  # ensureKtls only tolerates an already-attached ULP.
+  expect KtlsError:
+    ensureKtls(SocketHandle(-1))

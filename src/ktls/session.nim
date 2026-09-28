@@ -28,6 +28,19 @@ proc enableKtls*(fd: SocketHandle) =
   ## kTLS; `ENOTCONN` means the socket is not an established TCP socket.
   checkKtls(rawEnableUlp(fd), "enable kTLS ULP")
 
+proc ensureKtls*(fd: SocketHandle) =
+  ## Like `enableKtls`, but tolerates an already-attached `"tls"` ULP
+  ## (`EEXIST`). This happens when the TLS library itself offloaded the
+  ## connection first — e.g. distro OpenSSL builds with kTLS support
+  ## engage it during the handshake without being asked. In that case
+  ## the ULP is already what we want; just proceed to `setTx`/`setRx`
+  ## (on TLS 1.3, re-installing keys is the normal KeyUpdate path).
+  try:
+    enableKtls(fd)
+  except KtlsError as e:
+    if e.errorCode != int32(EEXIST):
+      raise
+
 template withCrypto(km: KeyMaterial, name, body: untyped) =
   ## Serialize `km` into the matching packed struct, then run `body`
   ## with `name` bound to it.
