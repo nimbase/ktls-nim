@@ -6,3 +6,7 @@ jobs:
     with:
       os: '[{"os":"ubuntu-latest"}]'
       nim-version: stable
+      # kTLS lives in the `tls` kernel module, which is not loaded by
+      # default on GH runners. Without it the loopback and OpenSSL
+      # end-to-end tests skip instead of running.
+      pre-test-command: 'sudo modprobe tls'

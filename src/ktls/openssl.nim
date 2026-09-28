@@ -12,7 +12,8 @@
 # Notes:
 # - `SSL_CTX_set_options`/`SSL_set_options` are C macros over
 #   `SSL_CTX_ctrl`/`SSL_ctrl` (`SSL_CTRL_OPTIONS = 32`); this module
-#   binds the real symbols, so it links against any `libssl.so.3`.
+#   binds the real symbols. The loader tries versioned runtimes first
+#   (`libssl.so.3`, 1.1) and falls back to the unversioned dev symlink.
 # - Whether offload actually engages depends on the OpenSSL build, the
 #   negotiated suite, and kernel support. The option only *permits* it.
 # - Manual offload (handshake elsewhere, install keys yourself) is the
@@ -28,7 +29,11 @@ const
     ## Boosts `sendfile` with hardware offload; the file must not change
     ## while being sent.
 
-{.push dynlib: "libssl.so".}
+# NOTE: the push carries `dynlib` but deliberately *not* bare
+# `importc` — with a bare `importc` in the push, Nim looks up the
+# Nim-side proc name instead of the `importc` rename and every call
+# dies with `could not import` (see `openssl/ssl.nim`).
+{.push dynlib: "libssl.so(.3|.1.1|)".}
 proc sslCtxCtrl(ctx: pointer, cmd: cint, larg: clong,
     parg: pointer): clong {.importc: "SSL_CTX_ctrl".}
 proc sslCtrl(ssl: pointer, cmd: cint, larg: clong,

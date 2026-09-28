@@ -15,3 +15,5 @@ requires "nimcypher >= 0.2.5"
 task test, "Run the test suite":
   for t in ["t_raw", "t_session", "t_tls13", "t_keylog", "t_integration"]:
     exec "nim c -r --hints:off tests/" & t & ".nim"
+  # t_openssl uses std/openssl and needs -d:ssl.
+  exec "nim c -r --hints:off -d:ssl tests/t_openssl.nim"
