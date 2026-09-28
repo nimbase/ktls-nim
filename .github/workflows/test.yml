@@ -1,7 +1,8 @@
-# name: test
-# on: [push, pull_request]
-# jobs:
-#   test:
-#     uses: nimbase/setup-nim-action/.github/workflows/test.yml@main
-#     with:
-#       nim-version: stable
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    uses: nimbase/setup-nim-action/.github/workflows/test.yml@main
+    with:
+      os: '[{"os":"ubuntu-latest"}]'
+      nim-version: stable

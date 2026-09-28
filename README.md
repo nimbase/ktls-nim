@@ -1,9 +1,10 @@
 <p align="center">
-  Linux kernel TLS (kTLS) offload for Nim — low-level C-style wrapper plus high-level API<br>
+  Linux kernel TLS (kTLS) offload for Nim<br>
+  low-level C-style wrapper & high-level API
 </p>
 
 <p align="center">
-  <code>nimble install ktls</code>
+  <code>nimble install ktls</code> | <code>clue install ktls</code>
 </p>
 
 <p align="center">
@@ -13,31 +14,16 @@
 
 
 ## Features
-- **Two layers, one package.** `ktls/raw` is a 1:1 C-style mapping of
-  `linux/tls.h` (constants, packed structs, raw `setsockopt` wrappers —
-  no validation, no exceptions). Everything else builds on it with a
-  safe, raising API.
-- **High-level session API over raw socket fds.** `enableKtls`,
-  `setTx` / `setRx`, TX/RX state read-back and `is*Offloaded` probes.
-  Key lengths are validated before any syscall, and kernel errors map
-  to `KtlsError` — including TLS 1.3 `KeyUpdate` pauses, which surface
-  as the distinct `KtlsKeyUpdateNeeded` exception instead of a bare
-  `EKEYEXPIRED`.
-- **All 8 kernel ciphers, TLS 1.2 + 1.3.** AES-GCM 128/256, AES-CCM 128,
-  ChaCha20-Poly1305, SM4-GCM, SM4-CCM, ARIA-GCM 128/256 — with the
-  kernel's quirks (empty ChaCha salt, ARIA is 1.2-only, split
-  salt/iv nonce layout) handled for you.
-- **TLS 1.3 key schedule (RFC 8446 §7.1–7.2).** `HKDF-Expand-Label`,
-  traffic key/IV derivation and `traffic upd` secret rotation, powered
-  by pure-Nim `nimcypher` — no `libssl` needed for key derivation.
-- **OpenSSL interop, two ways.** Let OpenSSL drive kTLS itself via
-  `SSL_OP_ENABLE_KTLS`, or do the handshake anywhere and install
-  keys manually from an NSS keylog (`CLIENT/SERVER_TRAFFIC_SECRET_0`
-  parsing + client/server role split included).
-- **Tested against reality.** RFC 8448 handshake vectors, an
-  independent Python/OpenSSL cross-check of every derivation, and a
-  live loopback test that encrypts through the real kernel (skips
-  gracefully where kTLS is unavailable).
+- Two layers in one package: a thin C-style mapping of the kernel
+  interface, plus a safe high-level API on top.
+- Simple session handling on plain socket descriptors, with clear
+  errors — including dedicated handling of TLS 1.3 key updates.
+- All kernel cipher suites, for both TLS 1.2 and TLS 1.3.
+- Built-in TLS 1.3 key derivation, with no OpenSSL required for it.
+- Works with OpenSSL two ways: let it offload by itself, or install
+  handshake keys manually from a key log.
+- Tested against official specification vectors and a live kernel
+  round-trip.
 
 ## Examples
 Offload a connected TCP socket with manually supplied key material.
