@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <a href="https://nimbase.github.io/ktls/">API reference</a><br>
-  <img src="https://github.com/nimbase/ktls/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/nimbase/ktls/workflows/docs/badge.svg" alt="Github Actions">
+  <a href="https://nimbase.github.io/ktls-nim/">API reference</a><br>
+  <img src="https://github.com/nimbase/ktls-nim/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/nimbase/ktls-nim/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
 
@@ -80,8 +80,8 @@ Run the suite with `clue test` (`t_integration` needs `sudo modprobe tls`
 and skips otherwise).
 
 ### ❤ Contributions & Support
-- 🐛 Found a bug? [Create a new Issue](https://github.com/nimbase/ktls/issues)
-- 👋 Wanna help? [Fork it!](https://github.com/nimbase/ktls/fork)
+- 🐛 Found a bug? [Create a new Issue](https://github.com/nimbase/ktls-nim/issues)
+- 👋 Wanna help? [Fork it!](https://github.com/nimbase/ktls-nim/fork)
 
 ### 🎩 License
 MIT license | Nim Community.
