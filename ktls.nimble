@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "George Lemon"
-description   = "Linux kernel TLS (kTLS) offload: low-level C-style wrapper plus high-level API"
+description   = "Linux kernel TLS (kTLS) offload"
 license       = "MIT"
 srcDir        = "src"
 
